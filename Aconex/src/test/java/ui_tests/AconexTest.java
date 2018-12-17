@@ -18,6 +18,7 @@ import pages.LoginPage;
 import pages.MailPage;
 import pages.WorldGamesPage;
 import utils.CommonUtils;
+import utils.Retry;
 
 
 /**
@@ -77,7 +78,7 @@ public class AconexTest {
 	 * @param projectName
 	 * @throws Exception
 	 */
-	@Test(dataProvider="project1", enabled=true)
+	@Test(dataProvider="project1", enabled=true, retryAnalyzer = Retry.class)
 	public void scenario1(String projectName) throws Exception{
 		HomePage homepage = new HomePage(driver);
 		homepage.selectProject(projectName);
@@ -100,7 +101,7 @@ public class AconexTest {
 	 * Scenario to validate the workflow for World Games
 	 * @param projectName
 	 */
-	@Test(dataProvider="project2", enabled=true)
+	@Test(dataProvider="project2", enabled=true, retryAnalyzer = Retry.class)
 	public void scenario2(String projectName) {
 		
 		HomePage homepage = new HomePage(driver);
@@ -123,14 +124,13 @@ public class AconexTest {
 	 * @throws Exception
 	 */
 	
-	@Test(enabled=true)
+	@Test(enabled=true, retryAnalyzer = Retry.class)
 	public void scenario3() throws Exception {
 		
 		MailPage mailPage = new MailPage(driver);
 		mailPage.navigateToBlankMail();
 		mailPage.sentBlankMail("Transmittal");
 	}
-	
 	
 	
 	
