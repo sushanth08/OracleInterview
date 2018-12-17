@@ -209,18 +209,10 @@ public class HotelResortPage {
 
 		String file = "/Users⁩/⁨sbhat5⁩/Documents⁩/⁨CRMS⁩/⁨AutomationCode⁩/⁨OracleInterview⁩/Aconex⁩/src⁩/test⁩/java⁩/dataFiles/test.pdf";
 		// hit enter
-		StringSelection selection = new StringSelection(file);
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		clipboard.setContents(selection, selection);
-		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_V);
-		robot.keyRelease(KeyEvent.VK_V);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ENTER);
-		// switch back
-		driver.switchTo().activeElement();
+		RobotWrite robot = new RobotWrite();
+
+		robot.upload(driver, file);
+		Thread.sleep(10000);
 	}
 	
 	
