@@ -31,12 +31,15 @@ import org.apache.commons.io.FileUtils;
 
 /**
  * @author sbhat5
- *
+ * Common methods required are placed in this class
  */
 public class CommonUtils {
 	private WebDriver driver = null;
 
 
+	/**
+	 * Creates the firefox driver instance and returns the same
+	 */
 	static Object startupSync = new Object();
 	private WebDriver setUpFirefoxDriver() throws IOException, InterruptedException{
 		synchronized (startupSync) {
@@ -54,6 +57,11 @@ public class CommonUtils {
 	}
 
 
+	/**
+	 * Initializes the firefox driver and opens the browser with the desired url
+	 * @param applicationURL
+	 * @return
+	 */
 	public WebDriver setUp(String applicationURL)
 	{
 		WebDriver driver = null;
@@ -68,6 +76,11 @@ public class CommonUtils {
 		return driver;
 	}
 
+	/**
+	 * Captures the screenshot upon error
+	 * @param result
+	 * @param driver
+	 */
 	
 	public void captureScreenshots(ITestResult result, WebDriver driver) {
 		if(ITestResult.FAILURE==result.getStatus())
@@ -97,6 +110,11 @@ public class CommonUtils {
 		}
 	}
 
+	/**
+	 * Wait for the element to be visible
+	 * @param driver
+	 * @param by
+	 */
 	public void webDriverWaitMethod(WebDriver driver, By by) {
 
 		WebElement element = driver.findElement(by);
@@ -111,6 +129,12 @@ public class CommonUtils {
 		.until(ExpectedConditions.visibilityOf(element));
 	}
 	
+	/**
+	 * Read json file and store it in a Map
+	 * @param filePath
+	 * @return
+	 * @throws Exception
+	 */
 	public Map<String,String> jsonReader(String filePath) throws Exception{
 		Map<String,String> map = new HashMap<String, String>();
 		FileReader reader = new FileReader(filePath);

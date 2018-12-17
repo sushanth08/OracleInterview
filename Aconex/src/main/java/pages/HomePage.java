@@ -25,7 +25,6 @@ public class HomePage {
 	
 	public void selectProject(String projectName) {
 		
-		
 		projectChangerArrow.click();
 		String xpathExpression = "//div[@title='"+projectName+"']";
 		driver.findElement(By.xpath(xpathExpression)).click();

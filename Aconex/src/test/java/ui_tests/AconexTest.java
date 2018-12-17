@@ -29,6 +29,11 @@ public class AconexTest {
 	WebDriver driver = null;
 	CommonUtils utils = null;
 	
+	/**
+	 * Creates the driver and login to the aconex server
+	 * @param testMethod
+	 * @throws Exception
+	 */
 	@BeforeMethod(alwaysRun = true)
 	private void setupDriver(Method testMethod) throws Exception {
 		System.out.println("Initializing the firefox driver and opening the Aconex server");
@@ -49,6 +54,11 @@ public class AconexTest {
 		
 	}
 	
+	/**
+	 * Quits the driver, takes screenshots on failure
+	 * @param result
+	 * @throws Exception
+	 */
 	@AfterMethod(alwaysRun = true)
 	private void quitBrowser(ITestResult result) throws Exception{
 		utils.captureScreenshots(result, driver);
@@ -62,8 +72,12 @@ public class AconexTest {
 		 };
 	}
 	
-	
-	@Test(dataProvider="project1")
+	/**
+	 * Scenario to validate Hotel VIP Resort  and Spa Document upload process
+	 * @param projectName
+	 * @throws Exception
+	 */
+	@Test(dataProvider="project1", enabled=true)
 	public void scenario1(String projectName) throws Exception{
 		HomePage homepage = new HomePage(driver);
 		homepage.selectProject(projectName);
@@ -82,8 +96,11 @@ public class AconexTest {
 		 };
 	}
 	
-	
-	@Test(dataProvider="project2")
+	/**
+	 * Scenario to validate the workflow for World Games
+	 * @param projectName
+	 */
+	@Test(dataProvider="project2", enabled=true)
 	public void scenario2(String projectName) {
 		
 		HomePage homepage = new HomePage(driver);
@@ -101,8 +118,12 @@ public class AconexTest {
 		
 	}
 	
+	/**
+	 * Scenario to validate the Blank mail sending process
+	 * @throws Exception
+	 */
 	
-	@Test
+	@Test(enabled=true)
 	public void scenario3() throws Exception {
 		
 		MailPage mailPage = new MailPage(driver);
